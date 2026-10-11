@@ -1,58 +1,18 @@
-# Javaid Bashir — Cinematic 3D Glass Hero Section
+# 💫 About Me:
+### About Me<br><br>- 🔭 I’m currently working as a **Subject Matter Expert (SME) at Cognizant**, supporting Google Cloud Platform (GCP) and helping teams resolve complex technical issues.<br>- 👯 I’m looking to collaborate on **cloud computing, GCP projects, web development, automation, and open-source initiatives.<br>- 🤝 I’m looking for help with **advancing my cloud engineering skills, exploring cloud automation, and building scalable technology solutions.<br>- 🌱 I’m currently learning **cloud technologies, data analytics, cloud operations, and modern web development practices.<br>- 💬 Ask me about **Google Cloud Platform (GCP), Google Workspace, technical troubleshooting, root cause analysis, DNS, SSL, web hosting, WordPress, HTML, CSS, JavaScript, PHP, MySQL, and data analysis**.<br>- ⚡ Fun fact: **I enjoy turning complex technical problems into simple solutions, building websites, and continuously exploring new technologies.
 
-A luxury, Apple-inspired personal portfolio hero section designed for **Javaid Bashir**, Senior Service Desk Specialist & Cloud / AI Explorer.
 
----
+## 🌐 Socials:
+[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/javaidbashir.in) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/javaidbashir.in) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/javaidbashir) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/javaidbashir9) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:javaidbashir9@gmail.com) 
 
-## 💎 Design System & Visual Direction
-
-- **Apple Spatial Glass Aesthetic**: Multi-layered frosted glass panels (`backdrop-filter: blur(24px)`), hairline translucent borders (`1px solid rgba(255, 255, 255, 0.12)`), and specular inner highlights.
-- **Cinematic 3D Video Backdrop**: Full-bleed background `<video>` supporting autoplay, loop, muted, and playsinline, with an asymmetric dark vignette protecting typography on the left while celebrating the visual energy on the right.
-- **Procedural 3D Flow Fallback**: When no video file is loaded yet, an interactive generative canvas immediately renders a silky 3D ribbon flow with cool-blue illumination.
-- **Restrained Cool-Blue Lighting**: Subtle volumetric glow accents (`#38bdf8`, `#22d3ee`, `#818cf8`) without excessive neon or cyberpunk cliches.
-- **Layer 3 Floating Dust**: Microscopic 3D stardust motes reacting delicately to mouse gestures and spatial depth.
-- **Spring-Engineered Entrance Choreography**: Non-blocking staggered entry sequence:
-  1. Cinematic backdrop & atmospheric lighting (0ms)
-  2. Floating glass navigation bar (200ms)
-  3. Status pill: `● AVAILABLE FOR OPPORTUNITIES` (350ms)
-  4. Name: `JAVAID BASHIR` (500ms)
-  5. Role: `Senior Service Desk Specialist` (650ms)
-  6. Domain tags: `Cloud Technology • GCP • AI • Technical Support` (800ms)
-  7. Bio narrative (950ms)
-  8. Spatial glass CTA buttons (1100ms)
-- **Accessibility**: Full support for `prefers-reduced-motion: reduce`.
+# 💻 Tech Stack:
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white) ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) ![Google Cloud](https://img.shields.io/badge/GoogleCloud-%234285F4.svg?style=for-the-badge&logo=google-cloud&logoColor=white) ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white) ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+# 📊 GitHub Stats:
+![](https://github-readme-stats.shion.dev/api?username=javaidbashir9&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
+![](https://streak-stats.demolab.com/?user=javaidbashir9&theme=dark&hide_border=false)<br/>
+![](https://github-readme-stats.shion.dev/api/top-langs/?username=javaidbashir9&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
 ---
+[![](https://komarev.com/ghpvc/?username=javaidbashir9&icon=0&color=0)](https://visitcount.itsvg.in)
 
-## 📁 File Structure
-
-```
-portfolio/
-├── index.html        # Semantic HTML5 with 6-layer 3D spatial layout
-├── style.css         # Apple-inspired glass tokens, typography, and responsive rules
-├── main.js           # Video controller, fallback canvas, 3D particles & tilt
-└── assets/
-    └── hero-flow.mp4 # (Drop your cinematic 3D Google Flow video here)
-```
-
----
-
-## 🚀 How to Run & Preview
-
-### Option 1: Direct Browser Launch
-Double-click `index.html` or open it directly in Google Chrome, Edge, Safari, or Brave.
-
-### Option 2: Local HTTP Server (Recommended for video & performance)
-Run in PowerShell inside this directory:
-```powershell
-npx serve .
-# Or using Python:
-python -m http.server 3000
-```
-Then visit: `http://localhost:3000`
-
----
-
-## 🎬 Adding Your Video
-1. Place your Google Flow video file in `assets/` and name it `hero-flow.mp4`.
-2. The page will instantly detect it, fade in the video smoothly, and transition the procedural canvas into subtle atmospheric background lighting.
+<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
