@@ -355,7 +355,7 @@ function initNavGlassSliderWithScrollSpy() {
   
   if (!container || !slider || navLinks.length === 0) return;
 
-  let currentActiveLink = navLinks[0];
+  let currentActiveLink = document.querySelector('#nav-links > li > .nav-link.active') || navLinks[0];
 
   function moveToLink(link, isVisible = true) {
     if (!link) return;
@@ -419,7 +419,9 @@ function initNavGlassSliderWithScrollSpy() {
     moveToLink(currentActiveLink, true);
   });
 
-  // ScrollSpy: auto-detect current section in view with hierarchical mapping
+  // ScrollSpy: auto-detect current section in view with hierarchical mapping (only when sections exist)
+  if (sections.length === 0) return;
+
   let scrollTimeout;
   window.addEventListener('scroll', () => {
     if (scrollTimeout) return;
@@ -448,7 +450,9 @@ function initNavGlassSliderWithScrollSpy() {
       }
 
       navLinks.forEach((link) => {
-        const targetId = link.getAttribute('href').replace('#', '');
+        const rawHref = link.getAttribute('href') || '';
+        if (!rawHref.startsWith('#')) return;
+        const targetId = rawHref.replace('#', '');
         if (targetId === mappedTargetId) {
           link.classList.add('active');
           currentActiveLink = link;

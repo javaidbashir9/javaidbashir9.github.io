@@ -1,0 +1,676 @@
+/* ==========================================================================
+   JAVAID BASHIR — RETRO NOKIA SNAKE GAME ARCADE
+   Layout: Responsive Adaptive Game Monitor (Left) + Score & Settings (Right)
+   Design System: Apple visionOS Frosted Dark Glass + Nokia 3310 Dot-Matrix LCD
+   ========================================================================== */
+
+/* Page Background & Layout Wrapper */
+.snake-page-wrap {
+  position: relative;
+  z-index: 10;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 85px 3vw 40px 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: calc(100vh - 100px);
+}
+
+/* Compact Header Banner */
+.snake-header-banner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 720px;
+}
+
+.snake-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  background: rgba(0, 34, 255, 0.18);
+  border: 1px solid rgba(0, 34, 255, 0.65);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 0 14px rgba(0, 34, 255, 0.35);
+}
+
+.snake-main-title {
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(0, 34, 255, 0.45);
+}
+
+.snake-subtitle {
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+  max-width: 620px;
+}
+
+/* Back to Portfolio Pill Button */
+.back-home-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 5px 14px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.25s var(--spring-ease);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-top: 2px;
+}
+
+.back-home-pill:hover {
+  background: rgba(0, 34, 255, 0.25);
+  border-color: rgba(0, 34, 255, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 34, 255, 0.4);
+}
+
+/* ==========================================================================
+   MAIN GAME STAGE: ADAPTIVE 2-COLUMN RESPONSIVE LAYOUT
+   ========================================================================== */
+.snake-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 18px;
+  align-items: start;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 980px) {
+  .snake-stage-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ==========================================================================
+   ADAPTIVE GAME SCREEN MONITOR
+   Responsive sizing fits laptops, desktops, tablets and mobile seamlessly
+   ========================================================================== */
+.snake-screen-monitor {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 58vh, 480px);
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background: rgba(12, 16, 26, 0.75);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(0, 34, 255, 0.22),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Laptop Viewport Height Optimization (Under 820px screen height) */
+@media (max-height: 820px) {
+  .snake-page-wrap {
+    padding-top: 76px;
+    gap: 12px;
+  }
+  .snake-screen-monitor {
+    height: clamp(300px, 52vh, 420px);
+  }
+}
+
+/* Tablet / Mobile screen heights */
+@media (max-width: 980px) {
+  .snake-screen-monitor {
+    height: clamp(280px, 48vh, 420px);
+  }
+}
+
+@media (max-width: 600px) {
+  .snake-screen-monitor {
+    height: clamp(240px, 42vh, 320px);
+  }
+}
+
+/* Top LCD Header Ribbon */
+.lcd-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 6;
+  flex-shrink: 0;
+}
+
+.lcd-status-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lcd-status-metrics {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+}
+
+.lcd-status-metrics strong {
+  font-size: 0.88rem;
+  color: #3b82f6;
+}
+
+/* Fullscreen Button on Screen Top Ribbon */
+.screen-fs-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.screen-fs-pill:hover {
+  background: rgba(0, 34, 255, 0.4);
+  border-color: rgba(0, 34, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 34, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* The Game Canvas Viewport Frame */
+.nokia-screen-inner {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #98bc72;
+}
+
+/* CRT Scanline & Dot-Matrix Filter Overlay */
+.nokia-screen-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.12) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 3px, 6px 100%;
+  z-index: 4;
+}
+
+/* Responsive HiDPI Canvas: Adapts cleanly to inner monitor box */
+#snake-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ==========================================================================
+   DISPLAY PALETTE THEMES
+   ========================================================================== */
+/* Theme 1: Classic Monochrome Nokia Green (Default) */
+.theme-retro-nokia .nokia-screen-inner {
+  background-color: #98bc72;
+}
+.theme-retro-nokia .lcd-top-bar {
+  color: #16240d;
+  background: #8aa966;
+  border-bottom-color: rgba(22, 36, 13, 0.35);
+}
+.theme-retro-nokia .screen-fs-pill {
+  color: #16240d;
+  border-color: rgba(22, 36, 13, 0.4);
+  background: rgba(22, 36, 13, 0.1);
+}
+
+/* Theme 2: VisionOS Cyber Neon Blue */
+.theme-cyber-neon .nokia-screen-inner {
+  background-color: #070913;
+}
+.theme-cyber-neon .lcd-top-bar {
+  color: #00f0ff;
+  border-bottom-color: rgba(0, 240, 255, 0.3);
+  background: rgba(0, 34, 255, 0.18);
+}
+.theme-cyber-neon .screen-fs-pill {
+  color: #00f0ff;
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.1);
+}
+
+/* Theme 3: Retro Amber Phosphor 80s */
+.theme-amber .nokia-screen-inner {
+  background-color: #f7a01d;
+}
+.theme-amber .lcd-top-bar {
+  color: #2b1702;
+  border-bottom-color: rgba(43, 23, 2, 0.35);
+  background: #dc8c14;
+}
+.theme-amber .screen-fs-pill {
+  color: #2b1702;
+  border-color: rgba(43, 23, 2, 0.4);
+  background: rgba(43, 23, 2, 0.1);
+}
+
+/* Theme 4: GameBoy Grey Matrix */
+.theme-gameboy .nokia-screen-inner {
+  background-color: #8b956d;
+}
+.theme-gameboy .lcd-top-bar {
+  color: #0f380f;
+  border-bottom-color: rgba(15, 56, 15, 0.35);
+  background: #79825e;
+}
+.theme-gameboy .screen-fs-pill {
+  color: #0f380f;
+  border-color: rgba(15, 56, 15, 0.4);
+  background: rgba(15, 56, 15, 0.1);
+}
+
+/* ==========================================================================
+   GAME OVER, PAUSE & START SCREEN OVERLAYS
+   ========================================================================== */
+.nokia-screen-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.nokia-screen-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-pixel-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 0 14px rgba(0, 34, 255, 0.85);
+}
+
+.overlay-pixel-score {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.overlay-pixel-score strong {
+  color: #3b82f6;
+  font-size: 1.25rem;
+}
+
+.overlay-instructions-sub {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 2px 0 8px 0;
+}
+
+.overlay-btn-start {
+  margin-top: 6px;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, rgba(0, 34, 255, 0.95) 0%, rgba(0, 18, 170, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(0, 34, 255, 0.65);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.overlay-btn-start:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 24px rgba(0, 34, 255, 0.85);
+}
+
+/* Mobile Touch Swipe Hint */
+.mobile-touch-hint {
+  display: none;
+  font-size: 0.74rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 980px) {
+  .mobile-touch-hint {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   SIDE DASHBOARD ON RIGHT: COMPACT, PROPORTIONED CARDS
+   ========================================================================== */
+.snake-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Frosted Glass Cards in Dashboard */
+.snake-card {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(14, 18, 28, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 35px -8px rgba(0, 0, 0, 0.75), inset 0 1px 1.5px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.3s var(--spring-ease), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.snake-card:hover {
+  border-color: rgba(0, 34, 255, 0.6);
+  box-shadow: 0 18px 40px -8px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 34, 255, 0.2);
+}
+
+.snake-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
+}
+
+.snake-card-title svg {
+  color: #0022ff;
+  filter: drop-shadow(0 0 6px rgba(0, 34, 255, 0.8));
+}
+
+/* Live Stats Grid */
+.snake-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.snake-stat-box {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.snake-stat-box:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 34, 255, 0.5);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.stat-highlight {
+  color: #3b82f6;
+  text-shadow: 0 0 12px rgba(59, 130, 246, 0.7);
+}
+
+/* Action Buttons Row */
+.snake-actions-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-snake-action {
+  padding: 8px 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  transition: all 0.2s var(--spring-ease);
+}
+
+.btn-snake-action:hover {
+  background: rgba(0, 34, 255, 0.25);
+  border-color: rgba(0, 34, 255, 0.65);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 34, 255, 0.4);
+}
+
+.btn-snake-primary {
+  background: linear-gradient(135deg, rgba(0, 34, 255, 0.85) 0%, rgba(0, 20, 180, 0.9) 100%);
+  border-color: rgba(0, 34, 255, 0.85);
+  box-shadow: 0 4px 14px rgba(0, 34, 255, 0.5);
+}
+
+.btn-snake-primary:hover {
+  background: linear-gradient(135deg, rgba(20, 54, 255, 0.95) 0%, rgba(0, 34, 255, 0.95) 100%);
+  box-shadow: 0 6px 20px rgba(0, 34, 255, 0.7);
+}
+
+/* Options & Settings Rows */
+.snake-setting-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.snake-setting-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.setting-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.setting-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.setting-desc {
+  font-size: 0.68rem;
+  color: var(--text-tertiary);
+}
+
+/* Theme & Speed Switcher Pills */
+.pill-selector {
+  display: flex;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 2.5px;
+  gap: 2.5px;
+}
+
+.pill-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.pill-btn:hover {
+  color: #ffffff;
+}
+
+.pill-btn.is-active {
+  background: rgba(0, 34, 255, 0.85);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 34, 255, 0.6);
+}
+
+/* Instructions / Keyboard Guide */
+.key-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.key-guide-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.kbd-badge {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 5px;
+  box-shadow: 0 1.5px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   IMMERSIVE FULLSCREEN MODE (:fullscreen or .is-fullscreen)
+   ========================================================================== */
+.snake-stage-grid.is-fullscreen,
+.snake-stage-grid:fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  padding: 16px;
+  background: #000000;
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.snake-stage-grid.is-fullscreen .snake-screen-monitor,
+.snake-stage-grid:fullscreen .snake-screen-monitor {
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  border-radius: 14px;
+}
+
+.snake-stage-grid.is-fullscreen #snake-canvas,
+.snake-stage-grid:fullscreen #snake-canvas {
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+}
